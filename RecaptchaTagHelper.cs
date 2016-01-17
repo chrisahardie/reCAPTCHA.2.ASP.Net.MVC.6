@@ -22,13 +22,13 @@ namespace Recaptcha
             siteKey = config["RecaptchaOptions:SiteKey"];
         }
         public override void Process(TagHelperContext context, TagHelperOutput output)
-        {
-            var token = CryptUtils.CreateToken(secret);
+        {            
             output.TagName = "div";
             output.Attributes["class"] = "g-recaptcha";
             output.Attributes["data-sitekey"] = siteKey;
             if (MultiSite == true)
             {
+                var token = CryptUtils.CreateToken(secret);
                 output.Attributes["data-stoken"] = token;
             }
             base.Process(context, output);       

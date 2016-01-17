@@ -17,6 +17,9 @@ namespace Recaptcha
 
         public static string CreateToken(string siteSecret)
         {
+            if (String.IsNullOrWhiteSpace(siteSecret)){
+                throw new ArgumentNullException(nameof(siteSecret));
+            }
             var sessionId = Guid.NewGuid().ToString();
             var token = CreateJsonToken(sessionId);
             return EncryptText(token, siteSecret);
