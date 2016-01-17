@@ -38,7 +38,7 @@ Note this will emit a hard-coded `"We could not verify that you are a human."` `
 Finally, in any form where you would like to add the `Recaptcha`, add this tag helper:
   
           <form asp-action="AddComment" asp-controller="Home">
-            <recaptcha></recaptcha>
+            <recaptcha multi-site="false"></recaptcha>
              ...
           </form>
       
