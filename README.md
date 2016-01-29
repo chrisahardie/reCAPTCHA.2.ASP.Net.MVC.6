@@ -1,4 +1,4 @@
-# Recaptcha-dnxcore (BETA)
+# Recaptcha-dnx (BETA)
 Implementation of Google's Recaptcha for ASP.Net 5/MVC 6 (dnxcore and dnx451)
 
 ## Getting started
@@ -24,7 +24,7 @@ You will now need to configure the `Recaptcha`. If you haven't done so already, 
        
 You will need to notify your application that you have added a custom tag helper from this project. In `/Views/_ViewImports.cshtml`, add this line:
 
-> @addTagHelper "*, Recaptcha-dnxcore"
+> @addTagHelper "*, Recaptcha-dnx"
 
  To use the `Recaptcha`, identify a controller action to which it is being applied and add this action filter:
  
