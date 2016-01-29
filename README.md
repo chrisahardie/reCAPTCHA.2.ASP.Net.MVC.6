@@ -1,5 +1,5 @@
 # Recaptcha-dnxcore (BETA)
-Implementation of Google's Recaptcha for ASP.Net 5 (DNX Core)
+Implementation of Google's Recaptcha for ASP.Net 5/MVC 6 (dnxcore and dnx451)
 
 ## Getting started
 
