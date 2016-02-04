@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Recaptcha
+namespace reCAPTCHA
 {
     public class CryptUtils
     {        

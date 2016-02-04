@@ -9,7 +9,7 @@ using System.Dynamic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Recaptcha
+namespace reCAPTCHA
 {
     public class ValidateRecaptchaAttribute : ActionFilterAttribute
     {
@@ -21,7 +21,7 @@ namespace Recaptcha
 
             if (String.IsNullOrWhiteSpace(recaptchaResponse))
             {
-                context.ModelState.AddModelError("recaptchaFailure", ErrorMessage);
+                context.ModelState.AddModelError("reCAPTCHAFailure", ErrorMessage);
                 await next();
             }
 
@@ -33,7 +33,7 @@ namespace Recaptcha
 
             if (String.IsNullOrWhiteSpace(siteSecret))
             {
-                throw new RecaptchaException("Could not find value for Recaptcha Secret in appsettings.json.");
+                throw new reCAPTCHAException("Could not find value for reCAPTCHA Secret in appsettings.json.");
             }
 
             using (var client = new HttpClient())
@@ -52,7 +52,7 @@ namespace Recaptcha
                 }
                 catch(HttpRequestException exc)
                 {
-                    throw new RecaptchaException("Could not reach Google's recaptcha service for verification.", exc);
+                    throw new reCAPTCHAException("Could not reach Google's reCAPTCHA service for verification.", exc);
                 }
                 var responseString = await response.Content.ReadAsStringAsync();
 
@@ -63,12 +63,12 @@ namespace Recaptcha
 
                     if (!isHuman)
                     {
-                        context.ModelState.AddModelError("recaptchaFailure", ErrorMessage);
+                        context.ModelState.AddModelError("reCAPTCHAFailure", ErrorMessage);
                     }
                 }
                 catch(RuntimeBinderException exc)
                 {
-                    throw new RecaptchaException("Response from Google's verification service was in an unexpected format:" + responseString, exc);
+                    throw new reCAPTCHAException("Response from Google's verification service was in an unexpected format:" + responseString, exc);
                 }
             }
 

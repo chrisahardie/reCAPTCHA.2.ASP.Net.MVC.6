@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace Recaptcha
+namespace reCAPTCHA
 {
-    public class RecaptchaException : Exception
+    public class reCAPTCHAException : Exception
     {
-        public RecaptchaException()
+        public reCAPTCHAException()
         {
         }
 
-        public RecaptchaException(string message)
+        public reCAPTCHAException(string message)
         : base(message)
         {
         }
 
-        public RecaptchaException(string message, Exception inner)
+        public reCAPTCHAException(string message, Exception inner)
         : base(message, inner)
         {
         }

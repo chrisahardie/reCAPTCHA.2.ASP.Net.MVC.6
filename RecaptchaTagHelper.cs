@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Razor.TagHelpers;
 using Microsoft.Extensions.Configuration;
 
-namespace Recaptcha
+namespace reCAPTCHA
 {
     [HtmlTargetElement("recaptcha", Attributes = multiSite)]
     public class RecaptchaTagHelper : TagHelper
