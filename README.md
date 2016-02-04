@@ -3,7 +3,9 @@ Implementation of Google's reCAPTCHA for ASP.Net 5/MVC 6 (dnxcore and dnx451)
 
 ## Getting started
 
-Once you have addded the project to your solution, you will need to add a dependency reference to it from your ASP.Net 5 project. You can do this via the traditional "Add References" option, or edit the `project.json` file directly.
+Once you have addded the project to your solution, you will need to add a dependency reference to it from your ASP.Net 5 project. You can do this via the package manager console:
+
+>Install-Package Recaptcha2-MVC6 -IncludePrerelease
 
 You will now need to configure the `reCAPTCHA`. If you haven't done so already, visit https://www.google.com/recaptcha/intro/index.html and sign up for a `reCAPTCHA` account. Once you have, you will be provided with a site key and secret. Add those to an `appsettings.json` file off the root of your ASP.Net 5 application. Your file should look like this (the following keys are invalid):
 
