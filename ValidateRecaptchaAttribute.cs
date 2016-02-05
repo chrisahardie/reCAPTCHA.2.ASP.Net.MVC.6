@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc.Filters;
 using Microsoft.CSharp.RuntimeBinder;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -17,7 +18,19 @@ namespace reCAPTCHA
         public string ErrorMessage { get; set; } = "We could not verify that you are a human.";
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            var recaptchaResponse = context.HttpContext.Request.Form["g-recaptcha-response"];
+            if(context.HttpContext.Request.Method != HttpMethod.Post.ToString())
+            {
+                throw new reCAPTCHAException("ValidateRecaptchaAttribute must only decorate POST actions.");
+            }
+
+            StringValues recaptchaResponse;
+            try {
+                recaptchaResponse = context.HttpContext.Request.Form["g-recaptcha-response"];
+            }
+            catch(InvalidOperationException exc)
+            {
+                throw new reCAPTCHAException("reCAPTCHA failure, likely due to ValidateRecaptchaAttribute improperly decorating an action to which an unintended request has been posted.", exc);
+            }
 
             if (String.IsNullOrWhiteSpace(recaptchaResponse))
             {
