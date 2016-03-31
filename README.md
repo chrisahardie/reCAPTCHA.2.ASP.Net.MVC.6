@@ -26,7 +26,7 @@ You will now need to configure the `reCAPTCHA`. If you haven't done so already, 
        
 You will need to notify your application that you have added a custom tag helper from this project. In `/Views/_ViewImports.cshtml`, add this line:
 
-> @addTagHelper "*, reCAPTCHA.2.ASP.Net.MVC.6"
+> @addTagHelper "*, Recaptcha2-MVC6"
 
  To use the `reCAPTCHA`, identify a controller action to which it is being applied and add this action filter:
  
